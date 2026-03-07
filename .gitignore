@@ -1,0 +1,19 @@
+# Rahasia & Environment
+.env
+backend/.env
+frontend/.env.local
+
+# Folder Node.js
+frontend/node_modules/
+frontend/.next/
+
+# Folder Go
+backend/main
+backend/__debug_bin
+
+# Data Database Postgres (SANGAT PENTING agar data DB tidak ikut ter-push)
+postgres_data/
+
+# Mac/Windows OS files
+.DS_Store
+Thumbs.db

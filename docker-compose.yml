@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    ports:
+      - "8081:8080" 
+    restart: unless-stopped
+    depends_on:
+      - db # Backend akan menunggu DB menyala
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: pesantren_user
+      POSTGRES_PASSWORD: 404062 # Silakan diganti kalau mau
+      POSTGRES_DB: pesantren_db
+    ports:
+      - "5432:5432" # Agar kamu bisa cek database lewat DBeaver/TablePlus dari laptopmu
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Agar data tidak hilang saat Docker dimatikan
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
