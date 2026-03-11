@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

@@ -4,6 +4,10 @@ import (
 	"fmt"
 	"log"
 	"pesantren-backend/config/db_config"
+	"pesantren-backend/model/banner_model"
+	"pesantren-backend/model/profile_model"
+	"pesantren-backend/model/psb_model"
+	"pesantren-backend/model/user_model"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -21,7 +25,12 @@ func InitDatabase() {
 		panic("can't connect to database postgres")
 	}
 
-	err = DB.AutoMigrate()
+	err = DB.AutoMigrate(
+		user_model.User{},
+		banner_model.Banner{},
+		profile_model.Profile{},
+		psb_model.PSBInfo{},
+	)
 
 	if err != nil {
 		log.Println("gagal migrate")
